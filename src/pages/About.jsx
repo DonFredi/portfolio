@@ -24,7 +24,7 @@ const About = () => {
         const interval = setInterval(() => {
             setCurrentImageIndex((prevIndex) => {
                 const newIndex = prevIndex === heroSectionImages.length - 1 ? 0 : prevIndex + 1;
-                console.log('Current Index:', newIndex);
+
                 return newIndex;
             });
         }, 4000);
@@ -56,7 +56,7 @@ const About = () => {
                 <div className="self-center">
                     <Link
                         to=""
-                        className="custom-gradient rounded-lg hover:bg-gradient-to-r from-blue-500 to-green-500 hover:underline transition-colors duration-300 ease-in-out p-3"
+                        className="custom-gradient rounded-lg hover:bg-gradient-to-r from-blue-500 to-green-500 transition-colors duration-300 ease-in-out p-3"
                     >
                         View Projects
                     </Link>

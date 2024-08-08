@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -30,6 +30,9 @@ const testimonials = [
 
 
 const Projects = () => {
+    const [allProjects, setAllProjects] = useState(false);
+
+
     return (
         <section
             className='py-6  text-white mt-[100px]'>
@@ -89,12 +92,50 @@ const Projects = () => {
                         </div>
                     </div>
                 </div>
-
                 <div className='flex justify-center items-center'>
-                    <Link className="custom-gradient rounded-xl transition-colors duration-300 ease-in-out p-3 hover:bg-gradient-to-r from-blue-500 to-green-500">
-                        View All Projects
+                    <Link
+                        onClick={() => setAllProjects(!allProjects)}
+                        className="custom-gradient rounded-xl transition-colors duration-300 ease-in-out p-3 hover:bg-gradient-to-r from-blue-500 to-green-500">
+                        {allProjects ? 'View Less Projects ' : 'View All Projects'}
                     </Link>
                 </div>
+                {allProjects && (
+                    <>
+                        <div className='flex flex-col md:flex-row-reverse p-6 md:p-16 gap-6 md:gap-20'>
+                            <div className='relative'>
+                                <div className='absolute top-2 left-4 w-[300px] md:w-[400px] h-[300px] md:h-[400px] bg-black border-8 border-red-600 rounded-lg'></div>
+                                <img src={Fralon} alt="profile-pic" className='relative rounded-lg w-[300px] md:w-[400px] h-[300px] md:h-[400px] -top-4 -left-4' />
+                            </div>
+                            <div className='p-6 text-left md:w-1/2'>
+                                <h3 className='text-xl font-semibold'>Project 4</h3>
+                                <p className='text-gray-700 mt-2'>Description of project 3.</p>
+                                <p className='mt-3 text-semibold'>Technologies: HTML, CSS, JavaScript, React</p>
+                                <div className='mt-4 flex justify-between items-center'>
+                                    <Link to="link_to_live_demo3" className='text-red-600 hover:underline'>Live Demo</Link>
+                                    <Link to="link_to_github_repo3" className='text-red-600 hover:underline'>GitHub</Link>
+                                </div>
+                            </div>
+                        </div>
+                        <div className='flex flex-col md:flex-row p-6 md:p-16 gap-6 md:gap-20'>
+                            <div className='relative'>
+                                <div className='absolute top-2 left-4 w-[300px] md:w-[400px] h-[300px] md:h-[400px] bg-black border-8 border-red-600 rounded-lg'></div>
+                                <img src={Fralon} alt="profile-pic" className='relative rounded-lg w-[300px] md:w-[400px] h-[300px] md:h-[400px] -top-4 -left-4' />
+                            </div>
+                            <div className='p-6 text-left md:w-1/2'>
+                                <h3 className='text-xl font-semibold'>Project 5</h3>
+                                <p className='text-gray-700 mt-2'>Description of project 3.</p>
+                                <p className='mt-3 text-semibold'>Technologies: HTML, CSS, JavaScript, React</p>
+                                <div className='mt-4 flex justify-between items-center'>
+                                    <Link to="link_to_live_demo3" className='text-red-600 hover:underline'>Live Demo</Link>
+                                    <Link to="link_to_github_repo3" className='text-red-600 hover:underline'>GitHub</Link>
+                                </div>
+                            </div>
+                        </div>
+                    </>
+                )
+                }
+
+
             </div>
 
             <h1 className='text-center font-semibold text-xl my-[100px]'>SKILLS</h1>

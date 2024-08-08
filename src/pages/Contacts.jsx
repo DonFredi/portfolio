@@ -39,7 +39,7 @@ const Contacts = () => {
                     </div>
                 </div>
 
-                <div className="flex flex-col md:flex-row justify-around p-2 text-lg gap-4 mt-6 items-center border-2 rounded-lg">
+                <div className="flex flex-col md:flex-row justify-around p-2 text-lg gap-4 my-6 items-center border-2 rounded-lg">
                     <p>{year} DON . All rights reserved.</p>
                     <div className='flex flex-row gap-2'>
                         <div className="bg-red-600 p-4 rounded-xl "><FaFacebookF /></div>

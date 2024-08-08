@@ -3,7 +3,8 @@ import About from "../pages/About";
 import Projects from "../pages/Projects";
 import Contacts from "../pages/Contacts";
 import useActiveLink from "../Hooks/useActiveLinks";
-import useWindowSize from "../Hooks/useWindowSize";
+import useWindowSize from "../Hooks/useWindowSize.";
+
 
 const RootLayout = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -24,7 +25,7 @@ const RootLayout = () => {
 
     return (
         <div className="bg-black relative">
-            <header className="text-white p-6 flex flex-row justify-between items-center">
+            <header className="text-white p-5 flex flex-row justify-between items-center">
                 <span className="logo text-xl">DON</span>
 
                 {width > 800 ? (
@@ -59,7 +60,7 @@ const RootLayout = () => {
                         </nav>
                         <a
                             href="#contacts"
-                            className="custom-gradient rounded-lg duration-300 ease-in-out p-2 hover:bg-gradient-to-r from-blue-500 to-green-500 transition-colors"
+                            className="custom-gradient rounded-lg duration-300 ease-in-out py-3 px-2 hover:bg-gradient-to-r from-blue-500 to-green-500 transition-colors"
                             onClick={(e) => handleSmoothScroll(e, "contacts")}
                         >
                             Contact Me
@@ -106,7 +107,7 @@ const RootLayout = () => {
 
             {isOpen && (
                 <div
-                    className={`bg-black absolute text-white top-16 left-0 w-full z-50 transition-all duration-500 ease-in-out flex flex-col gap-y-16 items-center ${isOpen ? "h-[350px]" : "h-0"
+                    className={`bg-black absolute text-white top-16 left-0 w-full z-50 transition-all duration-500 ease-in-out flex flex-col gap-y-16 items-center ${isOpen ? "h-[320px]" : "h-0"
                         } overflow-hidden`}
                 >
                     <ul className="flex flex-col justify-center text-center mt-9 gap-4 w-full">
@@ -134,7 +135,7 @@ const RootLayout = () => {
                     </ul>
                     <a
                         href="#contacts"
-                        className="p-4 hover:bg-red-600 transition-colors duration-500 ease-in-out rounded-lg"
+                        className="p-2 hover:bg-red-600 transition-colors duration-500 ease-in-out rounded-lg self-center"
                         onClick={(e) => handleSmoothScroll(e, "contacts")}
                     >
                         Contact Me
