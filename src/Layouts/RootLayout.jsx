@@ -16,17 +16,11 @@ const RootLayout = () => {
 
     useActiveLink();
 
-    // Function to handle smooth scrolling to a section
-    const handleSmoothScroll = (event, sectionId) => {
-        event.preventDefault();
-        const section = document.getElementById(sectionId);
-        section.scrollIntoView({ behavior: "smooth" });
-    };
 
     return (
         <div className="bg-black relative">
             <header className="text-white p-5 flex flex-row justify-between items-center">
-                <span className="logo text-xl">DON</span>
+                <span className="logo">DON</span>
 
                 {width > 800 ? (
                     <div className="flex flex-row gap-20">
@@ -34,25 +28,20 @@ const RootLayout = () => {
                             <ul className="flex justify-center flex-row text-xl font-bold gap-8 p-2">
                                 <a
                                     href="#about"
-                                    data-section="about"
                                     className="nav-link hover:text-red-600 transition-colors duration-300 ease-in-out"
-                                    onClick={(e) => handleSmoothScroll(e, "about")}
+
                                 >
                                     About
                                 </a>
                                 <a
                                     href="#projects"
-                                    data-section="projects"
                                     className="nav-link hover:text-red-600 transition-colors duration-300 ease-in-out"
-                                    onClick={(e) => handleSmoothScroll(e, "projects")}
                                 >
                                     Projects
                                 </a>
                                 <a
                                     href="#contacts"
-                                    data-section="contacts"
                                     className="nav-link hover:text-red-600 transition-colors duration-300 ease-in-out"
-                                    onClick={(e) => handleSmoothScroll(e, "contacts")}
                                 >
                                     Contacts
                                 </a>
@@ -61,7 +50,7 @@ const RootLayout = () => {
                         <a
                             href="#contacts"
                             className="custom-gradient rounded-lg duration-300 ease-in-out py-3 px-2 hover:bg-gradient-to-r from-blue-500 to-green-500 transition-colors"
-                            onClick={(e) => handleSmoothScroll(e, "contacts")}
+
                         >
                             Contact Me
                         </a>
@@ -110,25 +99,25 @@ const RootLayout = () => {
                     className={`bg-black absolute text-white top-16 left-0 w-full z-50 transition-all duration-500 ease-in-out flex flex-col gap-y-16 items-center ${isOpen ? "h-[320px]" : "h-0"
                         } overflow-hidden`}
                 >
-                    <ul className="flex flex-col justify-center text-center mt-9 gap-4 w-full">
+                    <ul className="flex flex-col justify-center text-center mt-9 gap-4 w-full ">
                         <a
                             href="#about"
                             className="hover:bg-red-600 p-2 transition-colors duration-500 ease-in-out"
-                            onClick={(e) => handleSmoothScroll(e, "about")}
+
                         >
                             About
                         </a>
                         <a
                             href="#projects"
                             className="hover:bg-red-600 p-2 transition-colors duration-500 ease-in-out"
-                            onClick={(e) => handleSmoothScroll(e, "projects")}
+
                         >
                             Projects
                         </a>
                         <a
                             href="#contacts"
                             className="hover:bg-red-600 p-2 transition-colors duration-500 ease-in-out"
-                            onClick={(e) => handleSmoothScroll(e, "contacts")}
+
                         >
                             Contacts
                         </a>
@@ -136,19 +125,21 @@ const RootLayout = () => {
                     <a
                         href="#contacts"
                         className="p-2 hover:bg-red-600 transition-colors duration-500 ease-in-out rounded-lg self-center"
-                        onClick={(e) => handleSmoothScroll(e, "contacts")}
+
                     >
                         Contact Me
                     </a>
                 </div>
             )}
-
             <section id="about">
                 <About />
             </section>
+
+
             <section id="projects">
                 <Projects />
             </section>
+
             <section id="contacts">
                 <Contacts />
             </section>

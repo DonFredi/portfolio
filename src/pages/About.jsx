@@ -46,6 +46,7 @@ const About = () => {
             >
                 {/* Top Content */}
                 <div>
+
                     <p className="text-4xl font-extrabold text-red-600">
                         FRONTEND DEVELOPER &lt;/&gt;
                     </p>
@@ -65,17 +66,17 @@ const About = () => {
 
 
 
-            <div className='flex flex-col md:flex-row justify-start p-4 md:p-18 mt-[100px] items-center '>
+            <div className='flex flex-col md:flex-row justify-start p-4 md:p-18 mt-[100px] items-center mx-10'>
                 <div className='relative mb-8 md:mb-0 md:mr-8 p-2'>
                     <div className='absolute top-2 left-4 w-[300px] h-[300px] md:w-[400px] md:h-[400px] bg-black border-8 border-red-600 rounded-lg'></div>
                     <img src={Profile} alt="profile-pic" className='relative rounded-lg w-[300px] h-[300px] md:w-[400px] md:h-[400px] -top-4 -left-4' />
                 </div>
-                <div className='flex flex-col justify-start w-full md:w-1/2 md:ml-16'>
+                <div className='flex flex-col justify-start w-full  md:w-1/2 md:mx-16'>
                     <p className='py-4 font-semibold text-xl'>ABOUT ME</p>
-                    <p className='text-lg leading-relaxed mb-2'>
+                    <p className=' leading-relaxed mb-2'>
                         Hi, I'm Fredrick Nunda, a passionate frontend developer with a keen eye for detail and a love for creating beautiful, user-friendly web experiences. With a strong foundation in HTML, CSS, Tailwind ,JavaScript, and React, I have a proven track record of delivering high-quality web applications.
                     </p>
-                    <p className='text-lg leading-relaxed'>
+                    <p className='leading-relaxed'>
                         I started my journey in web development with a desire to combine my creativity and technical skills to build websites that not only look great but also provide an exceptional user experience. Over the years, I've worked on a variety of projects, from small business websites to complex web applications, always striving to stay on the cutting edge of technology and design trends.
                     </p>
 
