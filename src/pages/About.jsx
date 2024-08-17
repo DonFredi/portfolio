@@ -47,7 +47,7 @@ const About = () => {
                 {/* Top Content */}
                 <div>
 
-                    <p className="text-4xl font-extrabold text-red-600">
+                    <p className="text-4xl font-extrabold text-red-600 text-center">
                         FRONTEND DEVELOPER &lt;/&gt;
                     </p>
 
