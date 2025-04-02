@@ -1,95 +1,86 @@
-import React, { useState, useEffect } from 'react';
-import Profile from '../assets/hero-pic.jpg';
-import Image1 from '../assets/code.jpg';
-import Image2 from '../assets/code-2.jpg';
-import Image3 from '../assets/code-3.jpg';
-import Image4 from '../assets/code-4.jpg';
-
-
-import { Link } from 'react-router-dom';
-
-const heroSectionImages = [
-    Image1,
-    Image2,
-    Image3,
-    Image4
-];
+import React from 'react';
+import { motion } from 'framer-motion';
+import Profile from '../assets/developer.jpeg';
+import Profile1 from '../assets/hero-pic.jpg';
 
 
 const About = () => {
 
-    const [currentImageIndex, setCurrentImageIndex] = useState(0)
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setCurrentImageIndex((prevIndex) => {
-                const newIndex = prevIndex === heroSectionImages.length - 1 ? 0 : prevIndex + 1;
-
-                return newIndex;
-            });
-        }, 4000);
-
-        return () => clearInterval(interval);
-    }, []);
-
-
 
     return (
         <section
-            className='flex flex-col text-white p-2 z-0'>
-            <div
-                className="h-screen bg-cover bg-center flex flex-col items-center justify-evenly"
-                style={{
-                    backgroundImage: `url(${heroSectionImages[currentImageIndex]})`,
-                    transition: 'background-image 1s ease-in-out' // Smooth transition effect
-                }}
-            >
-                {/* Top Content */}
-                <div>
 
-                    <p className="text-4xl font-extrabold text-red-600 text-center">
-                        FRONTEND DEVELOPER &lt;/&gt;
-                    </p>
+            className='flex flex-col text-white z-0'>
 
-                </div>
+            <div className='flex flex-col md:flex-row-reverse md:justify-between text-white p-2 mt-8'>
+                <motion.div
+                    viewport={{
+                        once: true,
+                        amount: 0.1
+                    }}
+                    initial={{ x: 200, opacity: 0 }}     // Start off-screen
+                    whileInView={{ x: 0, opacity: 1 }}
+                    transition={{ duration: 0.6, ease: "easeInOut" }}  // Smooth transition
+                >
+                    <div className='relative'>
+                        <div className='absolute top-2 left-4 w-[300px] md:w-[400px] h-[300px] md:h-[400px] bg-black border-8 border-red-600 rounded-lg'></div>
+                        <img src={Profile1} alt="profile-pic" className='relative rounded-lg w-[300px] h-[300px] md:w-[400px] md:h-[400px] -top-4 -left-4' />
+                    </div>
 
-                {/* Bottom Button */}
-                <div className="self-center">
-                    <Link
-                        to=""
-                        className="custom-gradient rounded-lg hover:bg-gradient-to-r from-blue-500 to-green-500 transition-colors duration-300 ease-in-out p-3"
-                    >
-                        View Projects
-                    </Link>
-                </div>
+                </motion.div>
+                <motion.div
+                    viewport={{
+                        once: true,
+                        amount: 0.1
+                    }}
+                    initial={{ x: -200, opacity: 0 }}     // Start off-screen
+                    whileInView={{ x: 0, opacity: 1 }}
+                    transition={{ duration: 0.6, ease: "easeInOut" }}  // Smooth transition
+                    className='flex flex-col justify-start w-full md:w-1/2'
+                >
+
+                    <div >
+                        <h1 className='heading'>WELCOME TO MY PORTFOLIO WEBSITE</h1>
+                        <p className='leading-relaxed font-semibold text-2xl'>
+                            Hello, my name's <span className='text-red-500 '> Fredrick</span>
+                        </p>
+                        <p>I'm a passionate frontend developer with a keen eye for detail and a love for creating beautiful, user-friendly web experiences.
+                        </p>
+                        <div className='flex flex-col md:flex-row justify-start gap-x-4 gap-y-4 w-full my-8 text-center'>
+                            <a href="#projects"
+                                className='rounded-xl transition-colors duration-300 ease-in-out p-3 bg-primary hover:bg-red-400 '
+                            >View Projects</a>
+
+                        </div>
+                    </div>
+                </motion.div>
             </div>
 
 
+            <motion.div
+                viewport={{
+                    once: true,
+                    amount: 0.1
+                }}
+                initial={{ y: 200, opacity: 0 }}     // Start off-screen
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.6, ease: "easeInOut" }}  // Smooth transition
+            >
+                <div className='flex flex-col md:flex-row text-white p-8 gap-6 md:gap-12 mt-32'>
+                    <div className='relative'>
+                        <div className='absolute top-2 left-4 w-[300px] md:w-[400px] h-[300px] md:h-[400px] bg-black border-8 border-red-600 rounded-lg'></div>
+                        <img src={Profile} alt="profile-pic" className='relative rounded-lg w-[300px] h-[300px] md:w-[400px] md:h-[400px] -top-4 -left-4' />
+                    </div>
+                    <div className='flex flex-col justify-start w-full md:w-1/2 md:mx-16'>
+                        <p className='heading'>ABOUT ME</p>
+                        <p className='leading-relaxed'>
+                            I started my journey in web development with a desire to combine my creativity and technical skills to build websites that not only look great but also provide an exceptional user experience. Over the years, I've worked on a variety of projects, from small business websites to complex web applications, always striving to stay on the cutting edge of technology and design trends.
+                        </p>
 
-            <div className='flex flex-col md:flex-row justify-start p-4 md:p-18 mt-[100px] items-center mx-10'>
-                <div className='relative mb-8 md:mb-0 md:mr-8 p-2'>
-                    <div className='absolute top-2 left-4 w-[300px] h-[300px] md:w-[400px] md:h-[400px] bg-black border-8 border-red-600 rounded-lg'></div>
-                    <img src={Profile} alt="profile-pic" className='relative rounded-lg w-[300px] h-[300px] md:w-[400px] md:h-[400px] -top-4 -left-4' />
-                </div>
-                <div className='flex flex-col justify-start w-full  md:w-1/2 md:mx-16'>
-                    <p className='py-4 font-semibold text-xl'>ABOUT ME</p>
-                    <p className=' leading-relaxed mb-2'>
-                        Hi, I'm Fredrick Nunda, a passionate frontend developer with a keen eye for detail and a love for creating beautiful, user-friendly web experiences. With a strong foundation in HTML, CSS, Tailwind ,JavaScript, and React, I have a proven track record of delivering high-quality web applications.
-                    </p>
-                    <p className='leading-relaxed'>
-                        I started my journey in web development with a desire to combine my creativity and technical skills to build websites that not only look great but also provide an exceptional user experience. Over the years, I've worked on a variety of projects, from small business websites to complex web applications, always striving to stay on the cutting edge of technology and design trends.
-                    </p>
-
-                    <div className='flex flex-col md:flex-row justify-start gap-x-4 gap-y-4 w-full my-8 text-center'>
-                        <Link className='custom-gradient rounded-xl transition-colors duration-300 ease-in-out p-3 hover:bg-gradient-to-r from-blue-500 to-green-500 '>Hire Me</Link>
-                        <Link
-                            to=""
-                            className='rounded-xl border border-red-400 hover:border-red-600 transition-colors duration-300 ease-in-out p-3'>
-                            Resume
-                        </Link>
                     </div>
                 </div>
-            </div>
+            </motion.div>
+
         </section >
 
     )

@@ -1,50 +1,46 @@
-import {
-  Route,
-  RouterProvider,
-  createBrowserRouter,
-  createRoutesFromElements
-}
-  from 'react-router-dom'
+import React, { Suspense, lazy } from 'react';
+import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
+import RootLayout from './Layouts/RootLayout';
+import NotFound from './pages/NotFound';
+import ErrorBoundary from './Layouts/ErrorBoundary'; // The ErrorBoundary component
+import ServiceCard from './pages/ServiceCard';
+// Lazy load pages
+const About = lazy(() => import('./pages/About'));
+const Projects = lazy(() => import('./pages/Projects'));
+const Testimonials = lazy(() => import('./pages/Testimonials'));
+const Contacts = lazy(() => import('./pages/Contacts'));
 
-
-//LAYOUTS
-import RootLayout from './Layouts/RootLayout'
-
-//PAGES
-import NotFound from './pages/NotFound'
-import About from './pages/About'
-import Projects from './pages/Projects'
-import Contacts from './pages/Contacts'
-
-
-
-const ErrorPage = () => {
-  return <div className='bg-black text-white flex flex-col items-center p-2'>
-    <h1>Oops! Something went wrong.</h1>
-  </div>;
-};
 
 function App() {
 
-
   const router = createBrowserRouter(
     createRoutesFromElements(
-      <Route path="/" element={<RootLayout />} errorElement={<ErrorPage />}>
+      <Route
+        path="/"
+        element={
+          <ErrorBoundary>
+            <Suspense fallback={<div>Loading...</div>}>
+              <RootLayout />
+            </Suspense>
+          </ErrorBoundary>
+        }
+
+      >
+        <Route path="services" element={<ServiceCard />} />
         <Route path="about" element={<About />} />
         <Route path="projects" element={<Projects />} />
+        <Route path="testimonials" element={<Testimonials />} />
         <Route path="contacts" element={<Contacts />} />
         <Route path="*" element={<NotFound />} />
       </Route>
     )
   )
+
   return (
     <div>
-
       <RouterProvider router={router} />
-
     </div>
-
-  )
+  );
 }
 
-export default App
+export default App;
