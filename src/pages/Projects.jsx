@@ -75,6 +75,7 @@ const Projects = () => {
                 {/* Render Projects */}
                 {projects.slice(0, allProjects ? projects.length : 3).map((project, index) => (
                     <motion.div
+                        key={index}
                         viewport={{
                             once: true,
                             amount: 0.1

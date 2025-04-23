@@ -1,16 +1,7 @@
-import React from 'react'
-import Client1 from '../assets/client1.jpg';
-import Client2 from '../assets/client1.jpg';
-import { motion } from 'framer-motion';
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-import { Pagination, Navigation } from "swiper/modules";
-
-
-
-
+import { useState } from 'react'
+import Client1 from '../assets/butter.jpg';
+import Client2 from '../assets/benz.png';
+import Client3 from '../assets/client1.jpg'
 
 const testimonials = [
     {
@@ -31,77 +22,44 @@ const testimonials = [
 ];
 
 const Testimonials = () => {
+    const [index, setIndex] = useState(0);
+    const length = testimonials.length;
+    const testimonial = testimonials[index];
+
+    const prevSlide = () => setIndex(index === 0 ? length - 1 : index - 1);
+    const nextSlide = () => setIndex(index === length - 1 ? 0 : index + 1);
+
+
+
+
     return (
         <article className='my-22 text-white'>
-            <motion.div
-                viewport={{
-                    once: true,
-                    amount: 0.1
-                }}
-                initial={{ y: 200, opacity: 0 }}     // Start off-screen
-                whileInView={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.6, ease: "easeInOut" }}  // Smooth transition
-            >  <h3 className='heading text-center'>WHAT DO CLIENTS SAY?</h3></motion.div>
-            <motion.div
-                viewport={{
-                    once: true,
-                    amount: 0.1
-                }}
-                initial={{ y: 200, opacity: 0 }}     // Start off-screen
-                whileInView={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.6, ease: "easeInOut" }}  // Smooth transition
-            >
-                <p className='my-8 w-[80%] mx-auto text-center'>Hearing from those I've had the pleasure to work with is one of the greatest validations of my work. Each project is a journey, and my clients' experiences are a testament to my dedication and skill.</p>
-            </motion.div>
-            <motion.div
-                viewport={{
-                    once: true,
-                    amount: 0.1
-                }}
-                initial={{ y: 200, opacity: 0 }}     // Start off-screen
-                whileInView={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.6, ease: "easeInOut" }}  // Smooth transition
-            >
-                <div className="my-12 relative  md:w-[90%] mx-auto w-[100%]">
-                    <Swiper
-                        spaceBetween={30}
-                        pagination={{
-                            clickable: true,
-                        }}
-                        navigation={{
-                            nextEl: '.swiper-button-next',
-                            prevEl: '.swiper-button-prev',
-                        }}
-                        modules={[Pagination, Navigation]}
-                        className="mySwiper"
-                    >
+            <h3 className='heading text-center'>WHAT DO CLIENTS SAY?</h3>
 
-                        {testimonials.map((testimonial, index) => (
-                            <SwiperSlide key={index}>
-                                <div className='flex flex-col md:flex-row justify-around items-center md:w-[80%] w-[90%] mx-auto md:p-4 p-2 my-12'>
-                                    <img src={testimonial.image} alt={`client_${index + 1}`}
-                                        className='w-32 h-32 rounded-full'
-                                    />
-                                    <div className='flex flex-col p-2 text-left md:w-[50%] w-[100%]'>
-                                        <p className='font-bold'>{testimonial.name}</p>
-                                        <p> <span className='text-2xl font-bold'> &quot;</span> {testimonial.text}
+            <p className='my-8 w-[80%] mx-auto text-center'>
+                Hearing from those I've had the pleasure to work with is one of the greatest validations of my work. Each project is a journey, and my clients' experiences are a testament to my dedication and skill.
+            </p>
 
-                                            <span className='text-2xl font-bold'>&quot;</span></p>
-                                    </div>
-
-                                </div>
-                            </SwiperSlide>
-                        ))}
-                        {/* Custom Navigation Buttons (optional styling) */}
-                        <div className='block'>
-                            <div className="swiper-button-prev"></div>
-                            <div className="swiper-button-next"></div>
-                        </div>
-
-                    </Swiper>
-
+            <div className="relative w-full max-w-3xl mx-auto p-8 rounded-2xl shadow-lg text-center my-14">
+                <div className="transition-all duration-500 ease-in-out">
+                    <img
+                        src={testimonial.image}
+                        alt={testimonial.name}
+                        className="w-20 h-20 rounded-full mx-auto mb-4 object-cover"
+                    />
+                    <p className="mb-4">"{testimonial.text}"</p>
+                    <h3 className="mt-4 text-lg">{testimonial.name}</h3>
                 </div>
-            </motion.div>
+
+                <div className="mt-6 flex justify-center gap-4">
+                    <button onClick={prevSlide} className="px-6 py-2 bg-primary rounded-full transform transition duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-xl">
+                        ←
+                    </button>
+                    <button onClick={nextSlide} className="px-6 py-2 bg-primary rounded-full transform transition duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-xl">
+                        →
+                    </button>
+                </div>
+            </div>
         </article>
     )
 }
